@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Search</h2>
+<form method="GET" action="/search">
+    <input type="text" name="q" class="border rounded-lg p-2 w-full" placeholder="Search...">
+</form>
+{% endblock %}

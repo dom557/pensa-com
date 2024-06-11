@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensa</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between">
+            <h1 class="text-white text-xl">Pensa</h1>
+            <div>
+                <a href="{% url 'home' %}" class="text-gray-300 hover:text-white mx-2">Home</a>
+                <a href="{% url 'search' %}" class="text-gray-300 hover:text-white mx-2">Search</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
