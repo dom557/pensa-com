@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Mitski",
+        "role": "Intp",
+        "image": "images/mitsuki.webp"
+    },
+    {
+        "name": "Samdak",
+        "role": "Infj",
+        "image": "images/samdak.jpg"
+    },
+    {
+        "name": "Haru",
+        "role": "Xstj",
+        "image": "images/haru.jpg"
+    },{
+        "name": "Hikary",
+        "role": "Xstj",
+        "image": "images/hikary.jpg"
+    },
+    {
+        "name": "Battousai",
+        "role": "Istp",
+        "image": "images/battousai.webp"
+    },
+    {
+        "name": "Halena",
+        "role": "Istp",
+        "image": "images/helina.webp"
+    },
+    {
+        "name": "Nameless",
+        "role": "Istp",
+        "image": "images/nameless.webp"
+    },
+    {
+        "name": "Ros",
+        "role": "Isfp",
+        "image": "images/ros.webp"
+    },
+    {
+        "name": "Yuki-san",
+        "role": "Infp",
+        "image": "images/YUKI.webp"
+    },
+    {
+        "name": "Yuki-kun",
+        "role": "Enfp",
+        "image": "images/yuki2.webp"
+    },
+    {
+        "name": "Naya",
+        "role": "Intp",
+        "image": "images/naya.webp"
+    },
+    {
+        "name": "Oreki",
+        "role": "Infp",
+        "image": "images/oreki.webp"
+    },
+    {
+        "name": "Nifa",
+        "role": "Infp",
+        "image": "images/nifa.webp"
+    },
+    {
+        "name": "Shin-pain",
+        "role": "Intp",
+        "image": "images/pain.webp"
+    },
+    {
+        "name": "Nana",
+        "role": "Intj",
+        "image": "images/nour.webp"
+    },
+    {
+        "name": "Zeyn",
+        "role": "Intj",
+        "image": "images/zeyn.webp"
+    },
+    {
+        "name": "Taher",
+        "role": "Enfj",
+        "image": "images/taher.webp"
+    }
+]
