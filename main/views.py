@@ -26,4 +26,4 @@ def search(request):
             if query.lower() in member['name'].lower() or query.lower() in member['role'].lower():
                 results.append(member)
     
-    return render(request, 'search.html', {'query': query, 'results': results})
+    return render(request, {'query': query, 'results': results})

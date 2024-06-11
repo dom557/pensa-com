@@ -1,72 +1,78 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<style>
-    .member-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 1rem;
-        transition: transform 0.3s ease;
-    }
-
-    .member-card:hover {
-        transform: scale(1.05);
-    }
-
-    .member-card img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-
-    .member-card .overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 1rem;
-        border-bottom-left-radius: 1rem;
-        border-bottom-right-radius: 1rem;
-    }
-
-    .member-card h3 {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-    }
-
-    .member-card p {
-        font-size: 1.25rem;
-        color: #ffffff;
-    }
-</style>
-
-<h2 class="text-3xl font-bold mb-6">Meet the Team</h2>
-<form method="GET" action="/search">
-    <input type="text" id="search-input" name="q" class="border rounded-lg p-2 w-full mb-6" placeholder="Search...">
+<h2 class="text-4xl  text-white font-bold mb-8  text-center">Pensa Lads</h2>
+<form method="GET" action="/search" class="mb-8 flex justify-center">
+    <input type="text" id="search-input" name="q" class="border rounded-lg p-3 w-3/4 sm:w-1/2 lg:w-1/3" placeholder="Search...">
 </form>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="member-grid">
     <!-- Loop through the members -->
     {% for member in members %}
-    <div class="bg-white shadow-md rounded-lg overflow-hidden member-card">
-        <img src="{% static '/'|add:member.image %}" alt="Profile Picture">
-        <div class="overlay">
-            <h3>{{ member.name }}</h3>
-            <p>{{ member.role }}</p>
+    <div class="relative bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 member-card cursor-pointer" 
+        data-name="{{ member.name }}" 
+        data-role="{{ member.role }}" 
+        data-image="{% static '/'|add:member.image %}" 
+        data-color="{{ member.color }}">
+        <img src="{% static '/'|add:member.image %}" alt="Profile Picture" class="w-full h-56 object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
+            <div class="text-center p-4 bg-white bg-opacity-20 rounded-lg">
+                <h3 class="text-2xl font-bold text-white mb-2">Name: {{ member.name }}</h3>
+                <p class="text-lg text-gray-300">Role: {{ member.role }}</p>
+            </div>
         </div>
     </div>
     {% endfor %}
 </div>
 
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 backdrop-filter backdrop-blur-sm hidden">
+    <div class="bg-white rounded-lg text-center shadow-lg p-8 relative max-w-lg mx-auto">
+        <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+        <img id="modal-image" src="" alt="Profile Picture" class="w-full h-56 object-cover rounded-lg mb-4">
+        <h3 class="text-3xl font-bold mb-4" id="modal-name"></h3>
+        <p class="text-xl" id="modal-role"></p>
+    </div>
+</div>
+
 <script>
+    const memberCards = document.querySelectorAll('.member-card');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalName = document.getElementById('modal-name');
+    const modalRole = document.getElementById('modal-role');
+    const closeModal = document.getElementById('close-modal');
+
+    memberCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const name = card.getAttribute('data-name');
+            const role = card.getAttribute('data-role');
+            const image = card.getAttribute('data-image');
+            const color = card.getAttribute('data-color');
+
+            modalName.textContent = `Name : ${name}`;
+            modalRole.textContent = `MBTI : ${role}`;
+            modalRole.style.color = color;  // Set the role text color
+            modalImage.src = image;
+
+            modal.classList.remove('hidden');
+        });
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+
     document.getElementById('search-input').addEventListener('input', function() {
         const query = this.value.toLowerCase();
-        const memberCards = document.querySelectorAll('.member-card');
-
         memberCards.forEach(card => {
-            const name = card.querySelector('h3').textContent.toLowerCase();
-            const role = card.querySelector('p').textContent.toLowerCase();
+            const name = card.getAttribute('data-name').toLowerCase();
+            const role = card.getAttribute('data-role').toLowerCase();
 
             if (name.includes(query) || role.includes(query)) {
                 card.style.display = 'block';

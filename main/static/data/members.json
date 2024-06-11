@@ -2,85 +2,102 @@
     {
         "name": "Mitski",
         "role": "Intp",
-        "image": "images/mitsuki.webp"
+        "image": "images/mitsuki.jpg",
+        "color": "purple"
     },
     {
         "name": "Samdak",
         "role": "Infj",
-        "image": "images/samdak.jpg"
+        "image": "images/samdak.jpg",
+        "color": "green"
     },
     {
         "name": "Haru",
         "role": "Xstj",
-        "image": "images/haru.jpg"
+        "image": "images/haru.jpg",
+        "color": "blue"
     },{
         "name": "Hikary",
         "role": "Xstj",
-        "image": "images/hikary.webp"
+        "image": "images/hikary.webp",
+        "color": "blue"
     },
     {
         "name": "Battousai",
         "role": "Istp",
-        "image": "images/hattori.webp"
+        "image": "images/hattori.webp",
+        "color": "yellow"
     },
     {
         "name": "Halena",
         "role": "Istp",
-        "image": "images/helina.webp"
+        "image": "images/helina.webp",
+        "color": "yellow"
     },
     {
         "name": "Nameless",
         "role": "Istp",
-        "image": "images/nameless.webp"
+        "image": "images/nameless.webp",
+        "color": "yellow"
     },
     {
         "name": "Ros",
         "role": "Isfp",
-        "image": "images/ros.webp"
+        "image": "images/ros.webp",
+        "color": "yellow"
     },
     {
         "name": "Yuki-san",
         "role": "Infp",
-        "image": "images/YUKI.webp"
+        "image": "images/YUKI.webp",
+        "color": "green"
     },
     {
         "name": "Yuki-kun",
         "role": "Enfp",
-        "image": "images/yuki2.webp"
+        "image": "images/yuki2.webp",
+        "color": "green"
     },
     {
         "name": "Naya",
         "role": "Intp",
-        "image": "images/naya.webp"
+        "image": "images/naya.webp",
+        "color": "purple"
     },
     {
         "name": "Oreki",
         "role": "Infp",
-        "image": "images/oreki.webp"
+        "image": "images/oreki.webp",
+        "color": "green"
     },
     {
         "name": "Nifa",
         "role": "Infp",
-        "image": "images/nifa.webp"
+        "image": "images/nifa.webp",
+        "color": "green"
     },
     {
         "name": "Shin-pain",
         "role": "Intp",
-        "image": "images/pain.webp"
+        "image": "images/pain.webp",
+        "color": "purple"
     },
     {
         "name": "Nana",
         "role": "Intj",
-        "image": "images/nour.webp"
+        "image": "images/nour.webp",
+        "color": "purple"
     },
     {
         "name": "Zeyn",
         "role": "Intj",
-        "image": "images/zeyn.webp"
+        "image": "images/zeyn.webp",
+        "color": "purple"
     },
     {
         "name": "Taher",
         "role": "Enfj",
-        "image": "images/taher.webp"
+        "image": "images/taher.webp",
+        "color": "green"
     }
 ]

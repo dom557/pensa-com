@@ -1,24 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pensa</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <style>
+        /* Move the background animation behind the content */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure it's behind other elements */
+        }
+    </style>
+
 </head>
-<body>
-    <nav class="bg-gray-800 p-4">
-        <div class="container mx-auto flex justify-between">
-            <h1 class="text-white text-xl">Pensa</h1>
-            <div>
-                <a href="{% url 'home' %}" class="text-gray-300 hover:text-white mx-2">Home</a>
-                <a href="{% url 'search' %}" class="text-gray-300 hover:text-white mx-2">Search</a>
+
+<body class="bg-black">
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <div id="stars4"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="w-full h-16 bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-sm fixed top-0 left-0 z-50 px-10">
+        <div class="w-full h-full flex flex-row items-center justify-between m-auto px-[10px]">
+            <h1 class="text-white text-3xl font-bold h-auto w-auto flex flex-row items-center"><a href="{% url 'home' %}" class="hover:text-gray-300">Pensa</a></h1>
+            <div class="flex items-center ">
+                <a href="{% url 'home' %}" class="text-gray-300 hover:text-white mx-4 text-lg">Home</a>
             </div>
         </div>
     </nav>
-    <div class="container mx-auto mt-4">
+    
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-20 pt-20 z-20"> <!-- Adjusted padding-top to pt-20 -->
         {% block content %}
         {% endblock %}
     </div>
+
 </body>
 </html>
