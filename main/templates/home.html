@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<h2 class="text-4xl  text-white font-bold mb-8  text-center">Pensa Lads</h2>
-<form method="GET" action="/search" class="mb-8 flex justify-center">
+
+<div class="flex gap-6 mt-10 justify-center cursor-pointer tracking-tighter text-7xl font-semibold text-white max-w-[600px] w-auto h-auto relative">
+    <span class="text-transparent font-semibold hover:brightness-150 bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600">
+       Pensa
+    </span> 
+    <span class="text-transparent font-semibold hover:brightness-150 bg-clip-text bg-gradient-to-r from-pink-500 via-pink-500 to-pink-600">
+      Lads
+    </span>
+</div>
+
+
+<form method="GET" action="/search" class="mb-8  mt-10 flex justify-center">
     <input type="text" id="search-input" name="q" class="border rounded-lg p-3 w-3/4 sm:w-1/2 lg:w-1/3" placeholder="Search...">
 </form>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="member-grid">
