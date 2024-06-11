@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <h2 class="text-2xl font-bold mb-4">Search</h2>
 <form method="GET" action="/search">
-    <input type="text" name="q" class="border rounded-lg p-2 w-full" placeholder="Search...">
+    <input type="text" name="q" class="border rounded-lg p-2 w-full" placeholder="Search..." value="{{ query }}">
 </form>
+<div id="search-results">
+    {% if query %}
+        {% if results %}
+            <h3>Search Results for "{{ query }}":</h3>
+            <div class="grid grid-cols-3 gap-4">
+                {% for member in results %}
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="{% static '/' %}{{ member.image }}" alt="Profile Picture" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">{{ member.name }}</h3>
+                        <p class="text-gray-600">{{ member.role }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No results found for "{{ query }}".</p>
+        {% endif %}
+    {% endif %}
+</div>
 {% endblock %}

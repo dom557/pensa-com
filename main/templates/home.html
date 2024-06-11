@@ -1,16 +1,79 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load static %} 
-<div class="grid grid-cols-3 gap-4">
-    <!-- Example card -->
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <!--add image EEHEESANG.jpg from static/images-->
-        <img src="{% static 'images/LEEHEESANG.jpg' %}" alt="LEEHEESANG" class="w-full h-48 object-cover">
-        {% comment %} <img src="{% static 'images/EEHEESANG.jpg' %}" alt="Profile Picture" class="w-full h-48 object-cover"> {% endcomment %}
-        <div class="p-4">
-            <h3 class="text-xl font-semibold">Name : LEEHEESANG</h3>
-            <p class="text-gray-600">Role : singer</p>
+{% load static %}
+<style>
+    .member-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .member-card:hover {
+        transform: scale(1.05);
+    }
+
+    .member-card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .member-card .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+    .member-card h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .member-card p {
+        font-size: 1.25rem;
+        color: #ffffff;
+    }
+</style>
+
+<h2 class="text-3xl font-bold mb-6">Meet the Team</h2>
+<form method="GET" action="/search">
+    <input type="text" id="search-input" name="q" class="border rounded-lg p-2 w-full mb-6" placeholder="Search...">
+</form>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="member-grid">
+    <!-- Loop through the members -->
+    {% for member in members %}
+    <div class="bg-white shadow-md rounded-lg overflow-hidden member-card">
+        <img src="{% static '/'|add:member.image %}" alt="Profile Picture">
+        <div class="overlay">
+            <h3>{{ member.name }}</h3>
+            <p>{{ member.role }}</p>
         </div>
     </div>
+    {% endfor %}
 </div>
+
+<script>
+    document.getElementById('search-input').addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        const memberCards = document.querySelectorAll('.member-card');
+
+        memberCards.forEach(card => {
+            const name = card.querySelector('h3').textContent.toLowerCase();
+            const role = card.querySelector('p').textContent.toLowerCase();
+
+            if (name.includes(query) || role.includes(query)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
 {% endblock %}
