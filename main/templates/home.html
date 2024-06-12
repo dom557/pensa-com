@@ -91,5 +91,15 @@
             }
         });
     });
+
+    document.getElementById('search-input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();  // Prevent form submission
+            const query = this.value.toLowerCase();
+            // Perform search based on the query
+            // This could be similar to what you have in the input event listener
+            console.log('Performing search for:', query);
+        }
+    });
 </script>
 {% endblock %}

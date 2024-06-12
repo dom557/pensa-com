@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.conf import settings
 import os
 
+
 def home(request):
     # Load the JSON data
     json_file_path = os.path.join(settings.BASE_DIR, 'main', 'static', 'data', 'members.json')
@@ -10,6 +11,7 @@ def home(request):
         members = json.load(f)
     
     return render(request, 'home.html', {'members': members})
+
 
 def search(request):
     query = request.GET.get('q', '')  # Get the search query from the request
@@ -26,4 +28,4 @@ def search(request):
             if query.lower() in member['name'].lower() or query.lower() in member['role'].lower():
                 results.append(member)
     
-    return render(request, {'query': query, 'results': results})
+    return render(request, 'home.html', {'query': query, 'results': results})
